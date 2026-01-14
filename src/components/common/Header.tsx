@@ -9,25 +9,33 @@ import { spacing } from '../../theme/spacing';
 interface HeaderProps {
   title: string;
   showBackButton?: boolean;
+  showMenuButton?: boolean;
   onBackPress?: () => void;
+  onMenuPress?: () => void;
   rightComponent?: React.ReactNode;
 }
 
 export default function Header({
   title,
   showBackButton = false,
+  showMenuButton = false,
   onBackPress,
+  onMenuPress,
   rightComponent,
 }: HeaderProps) {
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
       <View style={styles.header}>
-        {showBackButton ? (
-          <TouchableOpacity onPress={onBackPress} style={styles.backButton}>
+        {showMenuButton ? (
+          <TouchableOpacity onPress={onMenuPress} style={styles.iconButton}>
+            <Ionicons name="menu-outline" size={28} color={colors.text} />
+          </TouchableOpacity>
+        ) : showBackButton ? (
+          <TouchableOpacity onPress={onBackPress} style={styles.iconButton}>
             <Ionicons name="arrow-back" size={24} color={colors.text} />
           </TouchableOpacity>
         ) : (
-          <View style={styles.backButton} />
+          <View style={styles.iconButton} />
         )}
         
         <Text style={styles.title}>{title}</Text>
@@ -53,7 +61,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.md,
   },
-  backButton: {
+  iconButton: {
     width: 40,
     height: 40,
     alignItems: 'center',
