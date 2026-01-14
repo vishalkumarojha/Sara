@@ -71,6 +71,20 @@ const CustomDrawer: React.FC<CustomDrawerProps> = ({ isVisible, onClose }) => {
               <Ionicons name="people-outline" size={22} color={colors.text} />
               <Text style={styles.menuText}>Team</Text>
             </TouchableOpacity>
+            // At the bottom of your drawer content
+<View className="border-t border-slate-100 pt-4 px-4 pb-10">
+  <TouchableOpacity className="flex-row items-center p-3 mb-2">
+    <Ionicons name="settings-outline" size={22} color="#1e293b" />
+    <Text className="ml-4 font-semibold text-slate-800">Settings</Text>
+  </TouchableOpacity>
+  <TouchableOpacity 
+    className="flex-row items-center p-3" 
+    onPress={() => { onClose(); navigation.navigate('SignOutConfirm'); }}
+  >
+    <Ionicons name="log-out-outline" size={22} color="#1e293b" />
+    <Text className="ml-4 font-semibold text-slate-800">Sign Out</Text>
+  </TouchableOpacity>
+</View>
           </ScrollView>
         </Animated.View>
       </View>
